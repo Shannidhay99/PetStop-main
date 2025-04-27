@@ -1,0 +1,67 @@
+<section id="toys">
+    <div class="container mx-auto p-6">
+      <h1 class="text-2xl font-bold mb-4">Toys</h1>
+       
+        <!-- Product Grid -->
+        <div class="relative">
+            <!-- Left Arrow -->
+            <button onclick="scrollToyCarouselLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+    
+            <!-- Product List -->
+            <div id="toy-carousel" class="flex space-x-4 overflow-x-auto p-4 scrollbar-hide">
+                <!-- Products will be loaded here dynamically -->
+              <!--delete-->
+              {% for toy in toys %}
+              <div class="w-48 bg-white shadow-md rounded-lg p-4 flex-shrink-0">
+              <img src="{{ toy.product_img }}" alt="Product Image" class="w-full h-36 object-cover rounded-lg mb-2">
+              <h3 class="text-sm font-semibold">
+                  {{ toy.name }}
+              </h3> 
+              <p class="text-green-500 text-xs mb-2">{% if toy.stock != 0 %}
+                  {{ toy.stock }}
+                  In stock
+                  {% else %}
+                  Out of stock
+                  {% endif %}</p> 
+              <p class="text-lg font-bold text-gray-600">BDT {{ toy.price }}</p> 
+              <button class="mt-2 bg-blue-500 text-white rounded-full px-4 py-1 hover:bg-green-600 
+              add-to-cart-btn"
+                data-id="{{ toy.product_id }}" 
+                data-name="{{ toy.name }}" 
+                data-price="{{ toy.price }}"
+                data-image="{{toy.product_img}}"
+              > 
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+              </svg>
+              </button>
+              </div>
+    
+            
+              {% endfor %}
+            </div>
+    
+            <!-- Right Arrow -->
+            <button onclick="scrollToyCarouselRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+  
+  <script>
+      // Scroll the product carousel left and right
+    function scrollToyCarouselLeft() {
+      document.getElementById('toy-carousel').scrollBy({ left: -500, behavior: 'smooth' });
+    }
+  
+    function scrollToyCarouselRight() {
+      document.getElementById('toy-carousel').scrollBy({ left: 500, behavior: 'smooth' });
+    }
+  </script>
+    </div>
+</section>

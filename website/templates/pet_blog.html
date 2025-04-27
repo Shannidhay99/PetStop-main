@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetStop - Pet Blogging Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-blue-500 text-white">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold">PetStop</h1>
+        <nav class="flex space-x-4">
+          <a href="index.php" class="hover:underline">Home</a>
+          <a href="#blogs" class="hover:underline">Blogs</a>
+          <a href="#about" class="hover:underline">About</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-100 text-center py-10">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-gray-800">Welcome to PetStop</h2>
+        <p class="text-lg text-gray-600 mt-4">
+          A community for pet lovers to share stories, tips, and tricks.
+        </p>
+        <a
+          href="#blogs"
+          class="mt-6 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        >
+          Read Blogs
+        </a>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blogs" class="container mx-auto px-4 py-10">
+      <h3 class="text-3xl font-bold text-gray-800 text-center mb-6">
+        Latest Blogs
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Blog Card -->
+        <div
+          class="bg-white shadow-md rounded-md overflow-hidden transition-all duration-300 scale-90 hover:scale-95"
+        >
+          <img
+            src="{{ url_for('static', filename='img/blog-img/dd.jpg') }}"
+            alt="Blog Image"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <h4 class="text-xl font-semibold text-gray-800">
+              Caring for Your New Puppy
+            </h4>
+            <p class="text-gray-600 mt-2">
+              Learn the basics of taking care of your furry friend...
+            </p>
+            <a href="#" class="text-blue-500 mt-4 inline-block">Read More</a>
+          </div>
+        </div>
+
+        <!-- Repeat the blog card for more entries -->
+        <div
+          class="bg-white shadow-md rounded-md overflow-hidden transition-all duration-300 scale-90 hover:scale-95"
+        >
+          <img
+            src="{{ url_for('static', filename='img/blog-img/Blog_Cat-04.webp') }}"
+            alt="Blog Image"
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <h4 class="text-xl font-semibold text-gray-800">
+              Top 10 Cat Toys of 2024
+            </h4>
+            <p class="text-gray-600 mt-2">
+              Explore the best toys to keep your feline friend active...
+            </p>
+            <a href="#" class="text-blue-500 mt-4 inline-block">Read More</a>
+          </div>
+        </div>
+
+        <!-- Add more blog cards here -->
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-200 py-10">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold text-gray-800">About PetStop</h3>
+        <p class="text-lg text-gray-600 mt-4">
+          PetStop is your go-to platform for connecting with fellow pet owners.
+          Share your stories, learn tips from experts, and create lasting
+          memories with your pets.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-blue-500 text-white py-10">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold">Contact Us</h3>
+        <p class="text-lg mt-4">
+          Have questions or suggestions? Reach out to us at
+          <a href="mailto:contact@PetStop.com" class="underline"
+            >contact@PetStop.com</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 PetStop. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

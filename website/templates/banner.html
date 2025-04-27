@@ -1,0 +1,266 @@
+<!-- Image for the Magnific Popup -->
+<a href="static/img/mfp/MFP.jpg" id="popup-link">
+            
+</a>
+
+
+<script>
+$(document).ready(function() {
+    // Open the Magnific Popup for the specific image automatically
+    $('#popup-link').magnificPopup({
+        type: 'image'
+    }).magnificPopup('open'); // Automatically opens the popup when the page loads
+});
+</script>
+
+<a href="static/img/mfp/MFP.jpg" id="popup-link">
+            
+</a>
+
+
+
+
+
+<!-- <div class="relative h-screen bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='img/banner/' + random_image) }}');">
+<div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-8">
+<h1 class="text-5xl font-bold text-white mb-4">Welcome to PetStop</h1>
+<p class="text-xl text-gray-200 mb-8">Your one-stop shop for all things pet-related!</p>
+
+{% if 'user_id' in session %}
+<p class="text-xl text-gray-200 mb-8">Hello, {{ session['username'] }}! You're logged in.</p>
+{% else %}
+<p class="text-xl text-gray-200 mb-8">Please log in to access more features.</p>
+{% endif %}
+<a href="#shop" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 no-underline" >Shop Now</a>
+
+</div>
+
+</div> -->
+
+
+
+<div class="fixed bottom-4 right-4 bg-blue-400 text-white p-3 rounded-full shadow-lg flex items-center space-x-2 hover:bg-green-500">
+    <a href="{{ url_for('views.view_cart') }}" class="flex items-center space-x-2 no-underline">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+      </svg>
+      <span class="text-black">Cart (<span class="cart-count">0</span>)</span>
+    </a>
+</div>
+  
+
+
+<section id="shop" class="p-8 max-w-4xl mx-auto text-center">
+<h2 class="text-3xl font-semibold text-gray-800 mb-4">Explore Our Categories</h2>
+<p class="text-gray-600">Find food, toys, medicine, and more for your pets.</p>
+
+</section>
+
+
+
+<section >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
+        <h1 class="text-2xl font-bold mb-4">Regular Products</h1>
+        <div class="grid grid-cols-5 gap-6 overflow-auto max-h-96 scrollbar-hide">
+            {% for food in products %}
+            <div class="bg-white border rounded-lg shadow-md overflow-hidden hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
+                <img src="{{ food.product_img }}" alt="Product Image" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-sm font-semibold text-gray-800">
+                        {{ food.name }}
+                    </h3>
+                    <div class="flex items-center justify-between mt-2">
+                        <span class="text-green-600 text-sm font-medium">
+                            {% if food.stock != 0 %}
+                            {{ food.stock }}
+                            In stock
+                            {% else %}
+                            Out of stock
+                            {% endif %}
+                        </span>
+                        <span class="text-gray-600 font-bold">BDT {{ food.price }}</span>
+                    </div>
+                    <button class="mt-3 bg-blue-500 text-white w-full py-2
+                    rounded hover:bg-pink-600 add-to-cart-btn" 
+                    data-id="{{ food.product_id }}" 
+                    data-name="{{ food.name }}" 
+                    data-price="{{ food.price }}"
+                    data-image="{{food.product_img}}">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+</section>
+<section id="regular_products">
+    <div class="container mx-auto p-6">
+      
+  
+      <!-- Category Buttons -->
+      <!-- <div class="flex space-x-4 mb-4">
+        <button onclick="loadProducts('all')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">All</button>
+        <button onclick="loadProducts('toys')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Toys</button>
+        <button onclick="loadProducts('medicine')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Medicine</button>
+        
+      </div> -->
+  
+      <!-- Product Carousel -->
+      <div class="relative">
+          <!-- Left Arrow -->
+          <button onclick="scrollCarouselLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+          </button>
+          <h1 class="text-2xl font-bold mb-4">Food</h1>
+          <!-- Product List -->
+          <div id="product-carousel" class="flex space-x-4 overflow-x-auto p-4 scrollbar-hide">
+              <!-- Products will be loaded here dynamically -->
+            <!--delete-->
+            {% for toy in foods %}
+            <div class="w-48 bg-white shadow-md rounded-lg p-4 flex-shrink-0">
+            <img src="{{ toy.product_img }}" alt="Product Image" class="w-full h-36 object-cover rounded-lg mb-2">
+            <h3 class="text-sm font-semibold">
+                {{ toy.name }}
+            </h3> 
+            <p class="text-green-500 text-xs mb-2">{% if toy.stock != 0 %}
+                {{ toy.stock }}
+                In stock
+                {% else %}
+                Out of stock
+                {% endif %}</p> 
+            <p class="text-lg font-bold text-gray-600">BDT {{ toy.price }}</p> 
+            <button class="mt-2 bg-blue-500 text-white rounded-full px-4 py-1 
+            hover:bg-green-600 add-to-cart-btn"
+            data-id="{{ toy.product_id }}" 
+            data-name="{{ toy.name }}" 
+            data-price="{{ toy.price }}"
+            data-image="{{toy.product_img}}"
+            > 
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+            </svg>
+            </button>
+            </div>
+  
+          
+            {% endfor %}
+          </div>
+  
+          <!-- Right Arrow -->
+          <button onclick="scrollCarouselRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+          </button>
+      </div>
+  </div>
+  
+  
+  
+  
+<script>
+ // Scroll the product carousel left and right
+  function scrollCarouselLeft() {
+      document.getElementById('product-carousel').scrollBy({ left: -500, behavior: 'smooth' });
+  }
+  
+  function scrollCarouselRight() {
+      document.getElementById('product-carousel').scrollBy({ left: 500, behavior: 'smooth' });
+  }
+  
+
+</script>
+    
+  </section>
+  
+  <!-- Div to load the content dynamically -->
+   
+  
+    {% include "toys.html" %}
+   
+<style>
+    .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+</style>
+  <!-- Medicine Section -->
+  <section id="medicine">
+    <div class="container mx-auto p-6">
+      <h1 class="text-2xl font-bold mb-4">Medicine</h1>
+       
+        <!-- Product Grid -->
+        <div class="relative">
+            <!-- Left Arrow -->
+            <button onclick="scrollMedicineCarouselLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+    
+            <!-- Product List -->
+            <div id="medicine-carousel" class="flex space-x-4 overflow-x-auto p-4 scrollbar-hide">
+                <!-- Products will be loaded here dynamically -->
+              <!--delete-->
+              {% for toy in medicine %}
+              <div class="w-48 bg-white shadow-md rounded-lg p-4 flex-shrink-0">
+              <img src="{{ toy.product_img }}" alt="Product Image" class="w-full h-36 object-cover rounded-lg mb-2">
+              <h3 class="text-sm font-semibold">
+                  {{ toy.name }}
+              </h3> 
+              <p class="text-green-500 text-xs mb-2">{% if toy.stock != 0 %}
+                  {{ toy.stock }}
+                  In stock
+                  {% else %}
+                  Out of stock
+                  {% endif %}</p> 
+              <p class="text-lg font-bold text-gray-600">BDT {{ toy.price }}</p> 
+              <button class="mt-2 bg-blue-500 text-white rounded-full px-4 py-1 hover:bg-green-600 add-to-cart-btn"
+                data-id="{{ toy.product_id }}" 
+                data-name="{{ toy.name }}" 
+                data-price="{{ toy.price }}"
+                data-image="{{toy.product_img}}"
+              > 
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+              </svg>
+              </button>
+              </div>
+    
+            
+              {% endfor %}
+            </div>
+    
+            <!-- Right Arrow -->
+            <button onclick="scrollMedicineCarouselRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+  
+  <script>
+      // Scroll the product carousel left and right
+    function scrollMedicineCarouselLeft() {
+      document.getElementById('medicine-carousel').scrollBy({ left: -500, behavior: 'smooth' });
+    }
+  
+    function scrollMedicineCarouselRight() {
+      document.getElementById('medicine-carousel').scrollBy({ left: 500, behavior: 'smooth' });
+    }
+  </script>
+</section>
+
+
+
+<!-- code for working the add cart product -->

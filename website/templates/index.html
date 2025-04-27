@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+    <title>PetStop</title>
+    <link rel="icon" href="{{ url_for('static', filename='33.ico') }}" sizes="42x42">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static',filename='css/main.css') }}">
+    <script src='javascripts/main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./output.css" rel="stylesheet">
+    <!-- link for image -->
+    <script async src="https://imgbb.com/upload.js" data-auto-insert="html-embed-medium"></script>
+
+
+
+
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+
+
+
+    
+</head>
+<body>
+    
+
+
+
+  {% include "header.html" %}
+
+    <!--MFP-->
+
+
+      <!-- Image for the Magnific Popup -->
+      <a href="static/img/mfp/MFP.jpg" id="popup-link">
+            
+            </a>
+     
+    
+        <script>
+            $(document).ready(function() {
+                // Open the Magnific Popup for the specific image automatically
+                $('#popup-link').magnificPopup({
+                    type: 'image'
+                }).magnificPopup('open'); // Automatically opens the popup when the page loads
+            });
+        </script>
+
+
+    <!--MFP-->
+    
+    <!-- Hero Section -->
+<!-- <?php
+// Set the path to the images folder
+$imagesDir = 'img/banner/';
+// Get all image files with specific extensions
+$images = glob($imagesDir . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+// Select a random image
+$randomImage = $images[array_rand($images)];
+?>
+<?php
+// Start session to keep track of cart items
+session_start();
+
+// Simulate adding items to cart (this could come from your add-to-cart functionality)
+if (!isset($_SESSION['cart_count'])) {
+    $_SESSION['cart_count'] = 0;
+}
+// Example code to increase cart count (you can integrate this with your actual cart logic)
+$_SESSION['cart_count'];
+?> -->
+<!-- Hero Section -->
+<div class="relative h-screen bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='img/banner/' + random_image) }}');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-8">
+        <h1 class="text-5xl font-bold text-white mb-4">Welcome to PetStop</h1>
+        <p class="text-xl text-gray-200 mb-8">Your one-stop shop for all things pet-related!</p>
+        <a href="#shop" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600">Shop Now</a>
+    </div>
+</div>
+<!-- Floating Cart Element -->
+<div class="fixed bottom-4 right-4 bg-blue-400 text-white p-3 rounded-full shadow-lg flex items-center space-x-2 hover:bg-green-500">
+    <a href="viewCart.php" class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+        </svg>
+        <span>Cart  python code</span>
+    </a>
+</div>
+<!-- Additional Content -->
+<section id="shop" class="p-8 max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">Explore Our Categories</h2>
+    <p class="text-gray-600">Find food, toys, medicine, and more for your pets.</p>
+</section>
+    <!-- Hero Section end -->
+  <!-- Services Section -->
+
+  
+<section class="product-container  ">
+<div class="container mx-auto px-4 py-8">
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+           
+       <div class="bg-white border rounded-lg shadow-md overflow-hidden"> 
+              <img src="https://i.ibb.co.com/yqDdP2d/product4.webp" alt="Product Image" class="w-full h-40 object-cover"> 
+                <div class="p-4">
+                   <h3 class="text-sm font-semibold text-gray-800">
+                        Drools Kitten Food – Ocean Fish (400g)
+                 </h3>
+                   <div class="flex items-center justify-between mt-2"> 
+                        <span class="text-green-600 text-sm font-medium">In stock</span> 
+                       <span class="text-red-500 font-bold">BDT 250</span> 
+                    </div> 
+                 <button class="mt-3 bg-blue-500 text-white w-full py-2 rounded hover:bg-pink-600">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+          
+          
+
+            <!-- Add more product cards as needed -->
+        </div>
+    
+     
+
+</div>
+</section>
+
+
+<section id="regular_products">
+  <div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Regular Products</h1>
+
+    <!-- Category Buttons -->
+    <div class="flex space-x-4 mb-4">
+        <button onclick="loadProducts('all')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"><a href=""></a>All</button>
+        <button onclick="loadProducts('toys')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"><a href="#toys"></a>Toys</button>
+        <button onclick="loadProducts('medicine')" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"><a href="#medicine"></a>Medicine</button>
+    </div>
+
+    <!-- Product Carousel -->
+    <div class="relative">
+        <!-- Left Arrow -->
+        <button onclick="scrollLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <!-- Product List -->
+        <div id="product-carousel" class="flex space-x-4 overflow-x-auto p-4 scrollbar-hide">
+            <!-- Products will be loaded here dynamically -->
+          <!--delete-->
+         
+          <div class="w-48 bg-white shadow-md rounded-lg p-4 flex-shrink-0">
+          <img src="img/product2.jpg" alt="Product Image" class="w-full h-36 object-cover rounded-lg mb-2">
+          <h3 class="text-sm font-semibold">Product Name</h3> 
+          <p class="text-green-500 text-xs mb-2">in stock</p> 
+          <p class="text-lg font-bold text-red-600">BDT 85</p> 
+          <button class="mt-2 bg-blue-500 text-white rounded-full px-4 py-1 hover:bg-green-600"> 
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13M7 13h10M10 21a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z" />
+          </svg>
+          </button>
+          </div>
+
+        
+          <!--delete-->
+        </div>
+
+        <!-- Right Arrow -->
+        <button onclick="scrollRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-300 text-gray-600 hover:bg-gray-400 rounded-full p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+
+
+
+<script>
+// Function to load products based on category
+function loadProducts(category = 'all') {
+    // Fetch data from the Flask backend
+    fetch(`/get_products?category=${category}`)
+        .then(response => response.json())  // Expecting JSON data
+        .then(data => {
+            const carousel = document.getElementById('product-carousel');
+            carousel.innerHTML = ''; // Clear previous products
+
+            // Loop through each product and create a card
+            data.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('bg-white', 'shadow-md', 'rounded-lg', 'p-4', 'w-48', 'text-center');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="h-32 w-full object-cover rounded-lg mb-4">
+                    <h3 class="text-lg font-semibold">${product.name}</h3>
+                    <p class="text-green-500 text-sm">${product.availability}</p>
+                    <p class="text-red-500 font-bold">BDT ${product.price}</p>
+                    <button class="bg-red-500 text-white px-4 py-2 rounded-full mt-4">Add to Cart</button>
+                `;
+                carousel.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error('Error loading products:', error));
+}
+
+
+// Scroll the product carousel left and right
+function scrollLeft() {
+    document.getElementById('product-carousel').scrollBy({ left: -200, behavior: 'smooth' });
+}
+
+function scrollRight() {
+    document.getElementById('product-carousel').scrollBy({ left: 200, behavior: 'smooth' });
+}
+
+// Initial load of all products
+loadProducts();
+</script>
+  
+</section>
+
+<!-- Div to load the content dynamically -->
+ 
+
+  {% include "toys.html" %}
+ 
+ 
+<!-- Medicine Section -->
+<section id="medicine">
+  <div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Medicine</h1>
+     
+      <!-- Product Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Product Card -->
+          <div class="bg-white border rounded-lg shadow-md overflow-hidden">
+              <img src="https://via.placeholder.com/150" alt="Product Image" class="w-full h-40 object-cover">
+              <div class="p-4">
+                  <h3 class="text-sm font-semibold text-gray-800">
+                      Drools Kitten Food – Ocean Fish (400g)
+                  </h3>
+                  <div class="flex items-center justify-between mt-2">
+                      <span class="text-green-600 text-sm font-medium">In stock</span>
+                      <span class="text-red-500 font-bold">BDT 250</span>
+                  </div>
+                  <button class="mt-3 bg-blue-500 text-white w-full py-2 rounded hover:bg-pink-600">
+                      Add to Cart
+                  </button>
+              </div>
+          </div>
+
+          <!-- Repeat Product Card -->
+          
+
+          <!-- Product Card -->
+          
+
+          <!-- Add more product cards as needed -->
+      </div>
+
+
+</section>
+
+<!-- brands Card -->
+<!-- <?php
+// Define the folder path where your images are stored
+$brandImgDir = 'img/brand-img';  // Change this to the path of your folder
+
+// Scan the directory and filter out any non-image files (optional)
+$drandPic = array_diff(scandir($brandImgDir), array('.', '..'));
+
+// Prepare the list of image paths (relative to the web root)
+$imagePaths = [];
+foreach ($drandPic as $image) {
+    // You can add validation here to make sure only image files are included
+    $imagePaths[] = $brandImgDir . '/' . $image;
+}
+?> -->
+<script>module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 15s linear infinite",
+      },
+    },
+  },
+};
+</script>
+<div class="container mx-auto px-4 py-8 ">
+  <h2 class="text-2xl font-bold mb-4">Brands</h2>
+
+   <!-- Brand Carousel -->
+   <div class="relative overflow-hidden border rounded-lg">
+    <div id="brandCarousel" class="flex space-x-8 animate-scroll">
+       <!-- Brand Logo -->
+      <!-- <?php
+      // PHP loop to render each brand logo
+       
+      foreach ($imagePaths as $logo) {
+           
+          echo '<div class="flex-shrink-0">';
+          echo '<img src="' . $logo . '" alt="Brand Logo" class="w-32 h-auto object-contain">';
+          echo '</div>';
+          
+      }
+       
+      ?> -->
+      
+    </div>
+  </div>
+      
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- Popup modal -->
+<div id="popup" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Important Information</h2>
+                <p class="text-gray-600">
+                    This is the content of the pop-up paragraph. You can add more detailed information here that will appear when the link is clicked. The pop-up will disappear when you click anywhere outside the modal or close it using the button.
+                </p>
+                <div class="mt-4">
+                    <button id="close-popup" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Close</button>
+                </div>
+            </div>
+</div>
+
+{% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript to handle the popup visibility
+
+        // Get the elements
+        const openPopupButton = document.getElementById('open-popup');
+        const popup = document.getElementById('popup');
+        const closePopupButton = document.getElementById('close-popup');
+
+        // Open the popup when the link is clicked
+        openPopupButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default anchor behavior
+            popup.classList.remove('hidden'); // Show the popup
+        });
+
+        // Close the popup when the "Close" button is clicked
+        closePopupButton.addEventListener('click', () => {
+            popup.classList.add('hidden'); // Hide the popup
+        });
+
+        // Optional: Close the popup when clicked outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.classList.add('hidden'); // Hide the popup when clicked outside
+            }
+        });
+    </script>
+</body>
+</html>

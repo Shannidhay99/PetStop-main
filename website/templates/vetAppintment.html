@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veterinary Appointment Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% include 'favicon.html' %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{{ url_for('static',filename='css/main.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    {% include 'header.html' %}
+
+    <div class="max-w-4xl mx-auto bg-white p-8 my-20 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Veterinary Appointment Form
+      </h2>
+
+      <form id="appointment-form" action="#" method="POST">
+        <!-- Pet Information Section -->
+        <div class="space-y-6">
+          <div>
+            <label
+              for="pet-name"
+              class="block text-sm font-medium text-gray-700"
+              >Pet's Name</label
+            >
+            <input
+              type="text"
+              id="pet-name"
+              name="pet-name"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter your pet's name"
+            />
+          </div>
+
+          <div>
+            <label
+              for="pet-type"
+              class="block text-sm font-medium text-gray-700"
+              >Pet Type</label
+            >
+            <select
+              id="pet-type"
+              name="pet-type"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+            >
+              <option value="" disabled>Select Pet Type</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="bird">Bird</option>
+              <option value="rabbit">Rabbit</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label
+              for="pet-breed"
+              class="block text-sm font-medium text-gray-700"
+              >Pet Breed</label
+            >
+            <input
+              type="text"
+              id="pet-breed"
+              name="pet-breed"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter pet's breed (optional)"
+            />
+          </div>
+
+          <div>
+            <label for="pet-age" class="block text-sm font-medium text-gray-700"
+              >Pet's Age</label
+            >
+            <input
+              type="number"
+              id="pet-age"
+              name="pet-age"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter your pet's age"
+            />
+          </div>
+        </div>
+
+        <!-- Appointment Information Section -->
+        <div class="mt-6 space-y-6">
+          <div>
+            <label
+              for="appointment-date"
+              class="block text-sm font-medium text-gray-700"
+              >Preferred Appointment Date</label
+            >
+            <input
+              type="date"
+              id="appointment-date"
+              name="appointment-date"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="reason" class="block text-sm font-medium text-gray-700"
+              >Reason for Visit</label
+            >
+            <textarea
+              id="reason"
+              name="reason"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              rows="4"
+              placeholder="Describe the reason for the visit"
+              required
+            ></textarea>
+          </div>
+
+          <div>
+            <label
+              for="vet-preference"
+              class="block text-sm font-medium text-gray-700"
+              >Preferred Veterinarian</label
+            >
+            <input
+              type="text"
+              id="vet-preference"
+              name="vet-preference"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              placeholder="Optional, specify preferred veterinarian"
+            />
+          </div>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="mt-6 space-y-6">
+          <div>
+            <label
+              for="owner-name"
+              class="block text-sm font-medium text-gray-700"
+              >Owner's Full Name</label
+            >
+            <input
+              type="text"
+              id="owner-name"
+              name="owner-name"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <label
+              for="contact-number"
+              class="block text-sm font-medium text-gray-700"
+              >Contact Number</label
+            >
+            <input
+              type="tel"
+              id="contact-number"
+              name="contact-number"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="mt-2 w-full p-3 border border-gray-300 rounded-lg"
+              required
+              placeholder="Enter your email address"
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-8 text-center">
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-600 focus:outline-none"
+          >
+            Book Appointment
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- PHP code for displaying the table here -->
+    <?php
+
+
+?>
+
+    <footer class="bg-gray-900 text-gray-200">
+      <div class="container mx-auto py-6">
+        <div class="grid md:grid-cols-12 grid_cols-1 gap-7">
+          <div class="lg:col-span-4 col-span-4">
+            <div>
+              <a href="index.php">
+                <img class="h-12" src="img/logo/33.png" alt="" />
+              </a>
+              <p>PetStop.com</p>
+            </div>
+            <p class="mt-6 text-gray300">
+              PetStop is your one-stop solution for all your pet's needs. From
+              food and toys to health care and grooming tips, we've got it all.
+              Join the community and give your pets the love they deserve.
+            </p>
+          </div>
+          <div class="lg:col-span-2 md:col-span-4 col-span-12">
+            <h5 class="tracking-wide">Our Services</h5>
+            <ul class="list-none mt-6 space-y-2">
+              <li>
+                <a
+                  href="#regular_products"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Pet Products</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Veterinary Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Cat Fotering</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 md:col-span-4 col-span-12">
+            <h5 class="tracking-wide">My Account</h5>
+            <ul class="list-none mt-6 space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Trac My Order</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >View Cart</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Privecy & Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Sign In</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 md:col-span-4 col-span-12">
+            <h5 class="tracking-wide">Customer Services</h5>
+            <ul class="list-none mt-6 space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Support Center</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Shipping</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-gray-400 transition-all duratin-500 ease-in-out"
+                  >Term and Conditions</a
+                >
+              </li>
+
+              <li>
+                <div class="flex justify-center p-2">
+                  <a href="#!" class="me-6 [&>svg]:h-4 [&>svg]:w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 320 512"
+                    >
+                      <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                      <path
+                        d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="#!" class="me-6 [&>svg]:h-4 [&>svg]:w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 512 512"
+                    >
+                      <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                      <path
+                        d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="#!" class="me-6 [&>svg]:h-4 [&>svg]:w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 488 512"
+                    >
+                      <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                      <path
+                        d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="#!" class="me-6 [&>svg]:h-4 [&>svg]:w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 448 512"
+                    >
+                      <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                      <path
+                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="#!" class="me-6 [&>svg]:h-4 [&>svg]:w-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 448 512"
+                    >
+                      <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                      <path
+                        d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-700">
+        <div class="md:text-left text-left container mx-auto py-7 px-6">
+          <p class="mb-0">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            PetStop Ltd.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("appointment-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          // Set custom fonts and styles
+          doc.setFont("helvetica", "normal");
+          doc.setTextColor(0, 0, 0); // Set text color to black
+          doc.setFontSize(16);
+
+          // Header for the PDF
+          doc.setFontSize(20);
+          doc.setFont("helvetica", "bold");
+          doc.text(
+            "                           PetStop Animal Hospital",
+            20,
+            20
+          );
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "normal");
+          doc.text(
+            "                                           Official Pet Appointment Form",
+            20,
+            28
+          );
+          doc.text(
+            "---------------------------------------------------------------------------------------------------------",
+            20,
+            32
+          );
+
+          // Add pet details section
+          doc.setFontSize(14);
+          doc.text("Pet Information", 20, 40);
+          doc.setFontSize(12);
+          doc.text(
+            `Pet's Name: ${document.getElementById("pet-name").value}`,
+            20,
+            50
+          );
+          doc.text(
+            `Pet Type: ${document.getElementById("pet-type").value}`,
+            20,
+            55
+          );
+          doc.text(
+            `Pet Breed: ${document.getElementById("pet-breed").value || "N/A"}`,
+            20,
+            60
+          );
+          doc.text(
+            `Pet Age: ${document.getElementById("pet-age").value}`,
+            20,
+            65
+          );
+
+          // Add appointment details section
+          doc.setFontSize(14);
+          doc.text(
+            "                                    Appointment Information",
+            20,
+            75
+          );
+          doc.text(
+            `Preferred Appointment Date: ${
+              document.getElementById("appointment-date").value
+            }`,
+            20,
+            85
+          );
+          doc.text(
+            `Reason for Visit: ${document.getElementById("reason").value}`,
+            20,
+            90
+          );
+          doc.text(
+            `Preferred Veterinarian: ${
+              document.getElementById("vet-preference").value || "N/A"
+            }`,
+            20,
+            100
+          );
+
+          // Add owner details section
+          doc.setFontSize(14);
+          doc.text("Owner Information", 20, 110);
+          doc.setFontSize(12);
+          doc.text(
+            `Owner's Name: ${document.getElementById("owner-name").value}`,
+            20,
+            120
+          );
+          doc.text(
+            `Contact Number: ${
+              document.getElementById("contact-number").value
+            }`,
+            20,
+            125
+          );
+          doc.text(
+            `Email Address: ${document.getElementById("email").value}`,
+            20,
+            130
+          );
+
+          // Add footer with hospital contact information
+          doc.setFontSize(10);
+          doc.setFont("helvetica", "italic");
+          doc.text("For Appointment Queries, please contact us at:", 20, 145);
+          doc.text(
+            "Phone: +1 (123) 456-7890 | Email: contact@PetStop.com",
+            20,
+            150
+          );
+          doc.text("Website: www.PetStop.com", 20, 155);
+
+          // Draw a line at the bottom of the page for a professional look
+          doc.setLineWidth(0.5);
+          doc.line(20, 160, 190, 160);
+
+          // Add logo or image if you have one (optional)
+          // doc.addImage(imageData, 'PNG', 20, 180, 30, 30); // Uncomment and replace `imageData` with actual logo image data
+
+          // Save the PDF
+          doc.save("PetStop-appointment-form.pdf");
+        });
+    </script>
+  </body>
+</html>

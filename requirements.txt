@@ -13,7 +13,6 @@ Jinja2==3.1.6
 MarkupSafe==3.0.2
 mysql==0.0.3
 mysql-connector-python==9.3.0
-mysqlclient==2.2.7
 pillow==11.2.1
 PyMySQL==1.1.1
 requests==2.32.3
